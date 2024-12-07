@@ -7,6 +7,7 @@ source ./utilities/yes_or_no.sh
 
 source ./lib/check_logs.sh
 source ./lib/routine_review.sh
+source ./lib/send_files.sh
 
 MENU_OPTIONS=("Check Logs" "Send Files" "Routine Review" "Quit")
 
