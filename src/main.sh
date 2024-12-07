@@ -6,6 +6,7 @@ source ./utilities/selector.sh
 source ./utilities/yes_or_no.sh
 
 source ./lib/check_logs.sh
+source ./lib/routine_review.sh
 
 MENU_OPTIONS=("Check Logs" "Send Files" "Routine Review" "Quit")
 
@@ -17,10 +18,10 @@ while true; do
     check_logs
     ;;
   1)
-    echo "Sending files..."
+    send_files
     ;;
   2)
-    echo "Doing routine review..."
+    routine_review
     ;;
   3)
     echo "Good bye!!"
