@@ -1,4 +1,9 @@
-_LOGS_FILE="$PWD/logs/history.logs"
+_LOGS_DIR="$PWD/logs"
+_LOGS_FILE="$_LOGS_DIR/history.logs"
+
+if [[ ! -d "$_LOGS_DIR" ]]; then
+  mkdir $_LOGS_DIR
+fi
 
 if [[ ! -f "$_LOGS_FILE" ]]; then
   touch $_LOGS_FILE
