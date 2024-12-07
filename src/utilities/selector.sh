@@ -25,15 +25,25 @@ select_choice() {
   while true; do
     read -rsn1 input # Reads a key (do not expect 'Enter')
 
+    if [[ $input == $'\e' ]]; then
+      # Read the next two characters
+      read -rsn2 key
+      if [[ $key == "[A" ]]; then
+        input="w"
+      elif [[ $key == "[B" ]]; then
+        input="s"
+      fi
+    fi
+
     case $input in
     # Up
-    w)
+    w | W)
       if [ $selected -ge 1 ]; then
         ((selected--))
       fi
       ;;
     # Down
-    s)
+    s | S)
       if [ $selected -lt $((${#arr[@]} - 1)) ]; then
         ((selected++))
       fi
