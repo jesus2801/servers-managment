@@ -1,6 +1,7 @@
 _LOGS_DIR="$PWD/logs"
 LOGS_FILE="$_LOGS_DIR/history.logs"
 
+# verify the dir and file of logs
 if [[ ! -d "$_LOGS_DIR" ]]; then
   mkdir $_LOGS_DIR
 fi

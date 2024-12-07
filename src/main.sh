@@ -1,10 +1,12 @@
 #!/bin/bash
 
+# Useful files
 source ./data/constants.sh
 source ./lib/logger.sh
 source ./utilities/selector.sh
 source ./utilities/yes_or_no.sh
 
+# Functionalities
 source ./lib/check_logs.sh
 source ./lib/routine_review.sh
 source ./lib/send_files.sh

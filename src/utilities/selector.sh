@@ -4,8 +4,10 @@ show_menu() {
   clear # Clear screen to avoid duplicates
 
   local options=("$@")
+  #last element is the selected option
   local selected=${options[${#options[@]} - 1]}
 
+  # avoid the last element since it doest not belong to the options
   for ((i = 0; i < ${#options[@]} - 1; i++)); do
     if [[ $i -eq $selected ]]; then
       echo "[x] ${options[$i]}"
@@ -25,12 +27,14 @@ select_choice() {
   while true; do
     read -rsn1 input # Reads a key (do not expect 'Enter')
 
+    # first signal of an arrow
     if [[ $input == $'\e' ]]; then
+
       # Read the next two characters
       read -rsn2 key
-      if [[ $key == "[A" ]]; then
+      if [[ $key == "[A" ]]; then # up arrow
         input="w"
-      elif [[ $key == "[B" ]]; then
+      elif [[ $key == "[B" ]]; then # down arrow
         input="s"
       fi
     fi
