@@ -2,8 +2,10 @@
 
 source ./data/constants.sh
 source ./lib/logger.sh
-source ./scripts/selector.sh
-source ./scripts/yes_or_no.sh
+source ./utilities/selector.sh
+source ./utilities/yes_or_no.sh
+
+source ./lib/check_logs.sh
 
 MENU_OPTIONS=("Check Logs" "Send Files" "Routine Review" "Quit")
 
@@ -12,7 +14,7 @@ while true; do
 
   case "$?" in
   0)
-    echo "Checking logs..."
+    check_logs
     ;;
   1)
     echo "Sending files..."

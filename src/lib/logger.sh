@@ -1,12 +1,12 @@
 _LOGS_DIR="$PWD/logs"
-_LOGS_FILE="$_LOGS_DIR/history.logs"
+LOGS_FILE="$_LOGS_DIR/history.logs"
 
 if [[ ! -d "$_LOGS_DIR" ]]; then
   mkdir $_LOGS_DIR
 fi
 
-if [[ ! -f "$_LOGS_FILE" ]]; then
-  touch $_LOGS_FILE
+if [[ ! -f "$LOGS_FILE" ]]; then
+  touch $LOGS_FILE
 fi
 
 _make_log() {
@@ -15,10 +15,10 @@ _make_log() {
 
   for ((i = 1; i < ${#BASH_SOURCE[@]}; i++)); do
     local absolute_path=$(realpath "$PWD/${BASH_SOURCE[$i]}")
-    log+="FILE: $absolute_path:${BASH_LINENO[$((i - 1))]}\n"
+    log+="[ERROR] located at: $absolute_path:${BASH_LINENO[$((i - 1))]}\n"
   done
 
-  echo -e "$log" >>$_LOGS_FILE
+  echo -e "$log" >>$LOGS_FILE
 }
 
 _print_red() {
@@ -33,7 +33,7 @@ _print_error() {
   local msg="[ERROR]: $1"
   _print_red "$msg"
   _make_log "$msg"
-  echo "More information can be found at $_LOGS_FILE"
+  echo "More information can be found at $LOGS_FILE"
   exit 1
 }
 
@@ -60,4 +60,4 @@ print_msg() {
   esac
 }
 
-export -f print_msg
+export -f print_msg LOGS_FILE

@@ -1,7 +1,7 @@
 # $@: Options array
 # last option: Selected option
 show_menu() {
-  clear # Limpiar la pantalla para evitar duplicados
+  clear # Clear screen to avoid duplicates
 
   local options=("$@")
   local selected=${options[${#options[@]} - 1]}
@@ -17,30 +17,28 @@ show_menu() {
 
 # $@: Options array
 select_choice() {
-  # Inicializa el índice de la opción seleccionada
   local selected=0
 
   local arr=("$@")
   show_menu "${arr[@]}" $selected
 
-  # Lógica para manejar las teclas presionadas
   while true; do
-    read -rsn1 input # Lee una tecla (sin esperar ENTER)
+    read -rsn1 input # Reads a key (do not expect 'Enter')
 
     case $input in
-    # Arriba: Decrementar la opción seleccionada
+    # Up
     w)
       if [ $selected -ge 1 ]; then
         ((selected--))
       fi
       ;;
-    # Abajo: Incrementar la opción seleccionada
+    # Down
     s)
       if [ $selected -lt $((${#arr[@]} - 1)) ]; then
         ((selected++))
       fi
       ;;
-    # Enter: Ejecutar la opción seleccionada
+    # 'Enter'
     "")
       return $selected
       ;;
