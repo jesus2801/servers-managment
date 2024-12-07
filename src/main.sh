@@ -1,5 +1,9 @@
 #!/bin/bash
 
+source ./data/constants.sh
 source ./lib/logger.sh
+source ./scripts/selector.sh
 
-print_msg "error" "wanalsdkfjalsdkfj alksdjf lkdasj flkasdj fl"
+arr=("Opt 1" "Opt 2" "lakdfj")
+select_choice "${arr[@]}"
+echo $?
