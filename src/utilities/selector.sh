@@ -50,6 +50,7 @@ select_choice() {
       ;;
     # 'Enter'
     "")
+      echo -e "\n"
       return $selected
       ;;
     esac

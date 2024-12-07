@@ -1,4 +1,6 @@
 ask_yes_or_no() {
+  echo -e "\n"
+
   answer=""
   while [[ ! $answer =~ ^(y|n)$ ]]; do
     read -p "$1 (y/n): " answer
